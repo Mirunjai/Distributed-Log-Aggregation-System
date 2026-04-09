@@ -18,7 +18,7 @@
 #define BACKPRESSURE_LOW  10      /* packets/sec threshold → send OK          */
 
 /* AES-256 pre-shared key — must be exactly 32 bytes, same in client.c */
-static const unsigned char AES_KEY[32] = {
+static const unsigned char SECRET_KEY[32] = {
     0x4a,0x61,0x79,0x61,0x6e,0x74,0x68,0x4b,
     0x4c,0x6f,0x67,0x41,0x67,0x67,0x72,0x65,
     0x67,0x61,0x74,0x69,0x6f,0x6e,0x53,0x79,
@@ -80,7 +80,7 @@ static int aes_decrypt(const unsigned char *in,  int in_len,
     EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
     if (!ctx) return -1;
 
-    if (EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, AES_KEY, iv) != 1) {
+    if (EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, SECRET_KEY, iv) != 1) {
         EVP_CIPHER_CTX_free(ctx); return -1;
     }
 
@@ -115,7 +115,7 @@ static int aes_encrypt(const unsigned char *in,  int in_len,
     EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
     if (!ctx) return -1;
 
-    if (EVP_EncryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, AES_KEY, iv) != 1) {
+    if (EVP_EncryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, SECRET_KEY, iv) != 1) {
         EVP_CIPHER_CTX_free(ctx); return -1;
     }
 
