@@ -141,8 +141,8 @@ sudo apt install gcc libssl-dev make
 
 ```bash
 # Clone the repository
-git clone https://github.com/<your-username>/log-aggregation-system.git
-cd log-aggregation-system
+git clone https://github.com/Mirunjai/Distributed-Log-Aggregation-System.git
+cd Distributed-Log-Aggregation-System
 
 # Build both binaries
 make
